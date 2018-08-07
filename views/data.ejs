@@ -1,0 +1,46 @@
+<% include ./partials/header %>
+  
+<div class="ui main center aligned container segment">
+    <a href="/" class="fluid ui button">Go back</a>
+    <table id="myTable" class="ui orange celled table tablesorter">
+        <thead>
+            <tr>
+                <th>Series</th>
+                <th>Episode Name</th>
+                <th>Season</th>
+                <th>Episode Number</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < Object.keys(data).length; i++) { %>
+               <tr>
+                 <td>
+                     <div class="ui ribbon label">
+                         <%= data[i].series %>
+                     </div>
+                </td>
+                 <td><%= data[i].name %></td>
+                 <td><%= data[i].season %></td>
+                 <td><%= data[i].number %></td>
+                 <td><%= data[i].rating %></td>
+               </tr>
+            <% } %>
+      </tbody>
+    </table>
+</div>
+
+
+<script>
+    $(function(){
+          $("#myTable").tablesorter({
+              headerTemplate: '{content}{icon}',
+              cssIcon: 'icon sort',
+              cssIconDesc: 'down',
+              cssIconAsc: 'up'
+          });
+    });
+</script>
+
+<% include ./partials/footer %>
+

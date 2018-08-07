@@ -1,0 +1,116 @@
+<% include ./partials/header %>
+
+<div id="search" class="ui main center aligned text container clearing segment">
+    
+    
+    <div class="ui modal">
+      <i class="close icon"></i>
+      <div class="header">
+        Instructions
+      </div>
+      <div class="content">
+        <p>
+          <div class="ui bulleted list">
+           <div class="item b">Enter the name of a tv show.</div>
+           <div class="item b">Some shows will be suggested by the app, if your show is not found just press enter and the app will search for the show in IMBD database.</div>
+           <div class="item b">When your tv show is found you will be redirected  to the next page where you can add shows to the list.</div>
+           <div class="item b">You can add as many tv shows as you want, they are stored in the list.</div>
+           <div class="item b">When you are ready press <button class="mini ui blue button">Run</button> button  and allow the script to run.</div>
+           <div class="item b ">After the script has finished running you will be able to acces the table, simply click on the <button class="mini ui basic button">See the table</button> button. There you can view episodes, air date and their ratings parsed from IMDB.com.</div>
+           <div class="item b">If you wish to parse again you need to add tv shows to the list just as before.</div>
+          </div>
+          
+        </p>
+      </div>
+      <div class="actions">
+        <div class="ui blue approve right labeled icon button">Got it! <i class="checkmark icon"></i> </div>
+      </div>
+    </div>
+    
+    
+    <div class="ui grid"> 
+    
+    <div class="fourteen wide column"> <div class="ui huge center aligned header" id="head"> Search for a TV show </div> </div>
+     <div class="two wide column"> <button class="circular right floated mini ui icon button">
+    <i class="icon question"></i>
+    </button> </div> 
+
+    
+    </div>
+    
+    <form class="ui center aligned form" action="results" method="GET">
+        <div class="ui search">
+              <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Tv shows..." name="search" required>
+                <i class="search icon"></i>
+              </div>
+              <div class="results"></div>
+        </div>
+        
+        
+        <input id="greenbtn" class="ui center aligned green button" type="submit" value="Continue">
+    </form>
+    
+
+    
+    <a id="run" href="/run" class="ui left floated blue animated button" tabindex="0">
+      <div class="visible content">Run</div>
+      <div class="hidden content">
+          <i class="terminal icon"></i>
+      </div>
+     </a>
+     
+    <a id="show-data" href="/data" class="ui right floated disabled button"> See the table </a>
+    
+</div>
+
+
+<script>
+
+  var done = <%- JSON.stringify(done) %>;
+  console.log(typeof done)
+$('#run').click(function() {
+    if (done) {
+      $('#show-data').removeClass('ui basic button');
+      $('#show-data').addClass('ui disabled button')
+    }
+    $('#show-data').addClass('ui loading button');
+    setTimeout(function () {      
+        $('#show-data').removeClass('ui disabled button');
+        $('#show-data').removeClass("ui loading button");
+        $('#show-data').addClass('ui basic button')
+            }, 15000);
+});
+
+if (done) {
+  $('#show-data').removeClass('ui disabled button');
+  $('#show-data').addClass('ui basic button');
+}
+
+
+
+$('.ui.search').search({
+  source: content,
+  error: {
+    noResults: 'Searching... (Press ENTER for DeepSearch™)'
+  }
+});
+
+//$('.ui.modal').modal('show')
+
+$('.question').click(function(){
+        $('.ui.modal').modal('show');    
+     });
+
+// $(function() {
+//   $('#run').click(function(event) {
+//       event.preventDefault();
+//       $.get('/run', {
+//       onSuccess: function() {
+//           $('#show-data').css('pointer-events', 'all'); }
+//       });
+//   });
+// });
+</script>
+
+<% include ./partials/footer %>

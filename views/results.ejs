@@ -1,0 +1,36 @@
+<% include ./partials/header %>
+
+
+
+
+<div id="search" class="ui main center aligned text container segment">
+  
+    <div class="ui huge center aligned header">Search results</div>
+    
+    <div class="ui middle aligned divided list">
+        <% data["Search"].forEach(function(movie) { %>
+          <div class="item">
+            <div class="right floated content">
+                
+              <a class="ui button" href="/show/<%= movie["imdbID"]%>">
+                  <i class="icon table"></i> 
+                  Add to the Table
+              </a>
+            </div>
+            <div class="left floated content">
+              <%=movie["Title"] %> </strong>    <%= movie["Year"] %> 
+            </div>
+          </div>
+         <% }) %>
+    </div>
+    
+    <a href="/" class="ui animated large fade button">
+        <div class="visible content"> Return to search </div>
+        <div class="hidden content">
+          <i class="left arrow icon"></i>  
+        </div>
+    </a>
+
+<% include ./partials/footer %>
+
+

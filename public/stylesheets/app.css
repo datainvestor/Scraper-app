@@ -1,0 +1,31 @@
+#greenbtn {
+    margin-top:10px;
+}
+body {
+background: #536976;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#search {
+    margin-top: 20em;
+}
+
+.results.transition {
+    margin-left:15em;
+}
+
+.modal .transition {
+    margin-left: 0;
+}
+.tablesorter-header .icon {
+    float: right;
+}
+
+#head {
+    padding-left: 15%;
+}
+
+.b {
+    font-weight: bold;
+}
