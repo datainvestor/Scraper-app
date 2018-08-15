@@ -14,7 +14,7 @@ var sessionOptions = {
   resave : true,
   saveUninitialized : false,
   store: new MongoStore({
-    url:"mongodb://localhost/test",
+    url:"mongodb://ppim:pokemon1@ds018268.mlab.com:18268/showapp",
     //other advanced options
   })
 };
