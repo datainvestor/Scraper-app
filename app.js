@@ -14,7 +14,7 @@ var sessionOptions = {
   resave : true,
   saveUninitialized : false,
   store: new MongoStore({
-    url:process.env.DB
+    url: process.env.DB
     //other advanced options
   })
 };
